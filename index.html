@@ -137,7 +137,7 @@
                         </button>
                         <div class="dropdown-menu">
                             <div class="d-flex p-3">
-                                <div class="dropdown-item calc-btn">2<sup>nd</sup></div>
+                                <div class="dropdown-item calc-btn" data-value="2pow">2<sup>nd</sup></div>
                                 <div class="dropdown-item calc-btn" data-value="sin">sin</div>
                                 <div class="dropdown-item calc-btn" data-value="cos">cos</div>
                                 <div class="dropdown-item calc-btn" data-value="tan">tan</div>
@@ -159,14 +159,14 @@
                         </button>
                         <div class="dropdown-menu">
                             <div class="d-flex p-3">
-                                <div class="dropdown-item">|x|</div>
-                                <div class="dropdown-item">⌊x⌋</div>
-                                <div class="dropdown-item">⌈x⌉</div>
+                                <div class="dropdown-item calc-btn" data-value="modX">|x|</div>
+                                <div class="dropdown-item calc-btn" data-value="floor">⌊x⌋</div>
+                                <div class="dropdown-item calc-btn" data-value="ceil">⌈x⌉</div>
                             </div>
                             <div class="d-flex p-3">
-                                <div class="dropdown-item">rand</div>
-                                <div class="dropdown-item">🡢dms</div>
-                                <div class="dropdown-item">🡢deg</div>
+                                <div class="dropdown-item calc-btn" data-value="rand">rand</div>
+                                <div class="dropdown-item calc-btn" data-value="dms">→dms</div>
+                                <div class="dropdown-item calc-btn" data-value="deg">→deg</div>
                             </div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
 
                 <div id="scientificGrid" class="calc-btns d-flex flex-column flex-grow-1 d-none">
                     <div class="d-flex flex-grow-1 row row-cols-5 pb-1">
-                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">2<sup>nd</sup></button></div>
+                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="2pow">2<sup>nd</sup></button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">π</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">e</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">C</button></div>
@@ -191,8 +191,8 @@
                         </div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="1byx">1/x</button>
                         </div>
-                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">|x|</button></div>
-                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">exp</button></div>
+                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="modX">|x|</button></div>
+                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="exp">exp</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">mod</button></div>
                     </div>
 
@@ -203,12 +203,12 @@
                         </div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">(</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">)</button></div>
-                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">n!</button></div>
+                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="fact">n!</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">÷</button></div>
                     </div>
 
                     <div class="d-flex flex-grow-1 row row-cols-5 pb-1">
-                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">x<sup>y</sup></button></div>
+                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="pow">x<sup>y</sup></button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">7</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">8</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">9</button></div>
@@ -216,7 +216,7 @@
                     </div>
 
                     <div class="d-flex flex-grow-1 row row-cols-5 pb-1">
-                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">10<sup>x</sup></button></div>
+                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="10pow">10<sup>x</sup></button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">4</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">5</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">6</button></div>
@@ -224,7 +224,7 @@
                     </div>
 
                     <div class="d-flex flex-grow-1 row row-cols-5 pb-1">
-                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">log</button></div>
+                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="log">log</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">1</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">2</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">3</button></div>
@@ -233,7 +233,7 @@
                     </div>
 
                     <div class="d-flex flex-grow-1 row row-cols-5 pb-1">
-                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn">ln</button></div>
+                        <div class="col p-1"><button class="btn btn-lg h-100 w-100 calc-btn" data-value="ln">ln</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">+/-</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">0</button></div>
                         <div class="col p-1"><button class="btn btn-lg h-100 w-100 bg-white calc-btn">.</button></div>
@@ -247,8 +247,12 @@
 
             </div>
 
-            <!-- right part -->
-            <div class="right-part col-lg-3 d-none d-lg-block"></div>
+            <!-- right part (History) -->
+            <div class="right-part col-lg-3 d-none d-lg-block d-flex flex-column">
+                <div class="h3 opacity-75">History :</div>
+                <div id="historyBox"></div>
+            </div>
+
         </div>
     </div>
 

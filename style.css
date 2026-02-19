@@ -53,8 +53,10 @@ body.dark-mode .offcanvas{
     background-color: #1e1e1e;
 }
 
-body.dark-mode .themeText, .modeText, hr{
-    color: white;
+body.dark-mode .themeText,
+body.dark-mode .modeText,
+body.dark-mode hr {
+  color: white;
 }
 
 body.dark-mode .closeBtn{

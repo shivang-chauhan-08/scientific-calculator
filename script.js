@@ -56,11 +56,36 @@ buttons.forEach((btn) => {
                     .replaceAll("x", "*")
                     .replaceAll("÷", "/");
 
+                let result = eval(finalExp);
+
                 input.innerText = output.innerText;
-                output.innerText = eval(finalExp);
+                output.innerText = result;
+
+                let history = JSON.parse(localStorage.getItem("calcHistory")) || [];
+
+                history.unshift({
+                    input: expression,
+                    output: result
+                });
+
+                localStorage.setItem("calcHistory", JSON.stringify(history));
+
+                loadHistory();
+
             } catch {
                 output.innerText = "Error";
             }
+            return;
+        }
+
+        // +/- Functionality
+        if (value === "+/-") {
+            if (expression.startsWith("-")) {
+                expression = expression.slice(1);
+            } else {
+                expression = "-" + expression;
+            }
+            output.innerText = expression;
             return;
         }
 
@@ -105,6 +130,8 @@ buttons.forEach((btn) => {
             return;
         }
 
+
+        // Scientific Calculator Operations
         // sin x
         if (value2 === "sin") {
             try {
@@ -192,6 +219,217 @@ buttons.forEach((btn) => {
             return;
         }
 
+        // mod
+        if (value === "mod") {
+            expression += "%";
+            output.innerText = expression;
+            return;
+        }
+
+        // |x|
+        if (value2 === "modX") {
+            try {
+                let num = eval(expression);
+                let result = Math.abs(num);
+
+                output.innerText = result;
+                expression = result.toString();
+                input.innerText = expression;
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // 2pow
+        if (value2 === "2pow") {
+            try {
+                let num = eval(expression);
+                let result = Math.pow(2, num);
+
+                input.innerText = "2^(" + num + ")";
+                output.innerText = result;
+                expression = result.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // exp
+        if (value2 === "exp") {
+            try {
+                let num = eval(expression);
+                let result = Math.exp(num);
+
+                input.innerText = "exp(" + num + ")";
+                output.innerText = result;
+                expression = result.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // factorial
+        if (value2 === "fact") {
+            try {
+                let num = eval(expression);
+
+                if (num < 0) {
+                    output.innerText = "Error";
+                    return;
+                }
+
+                let fact = 1;
+                for (let i = 1; i <= num; i++) {
+                    fact *= i;
+                }
+
+                input.innerText = num + "!";
+                output.innerText = fact;
+                expression = fact.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // x^y
+        if (value2 === "pow") {
+            expression += "**";   // JS power operator
+            input.innerText = expression;
+            return;
+        }
+
+        // 10^x
+        if (value2 === "10pow") {
+            try {
+                let num = eval(expression);
+                let result = Math.pow(10, num);
+
+                input.innerText = "10^(" + num + ")";
+                output.innerText = result;
+                expression = result.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // log(x)
+        if (value2 === "log") {
+            try {
+                let num = eval(expression);
+                let result = Math.log10(num);
+
+                input.innerText = "log(" + num + ")";
+                output.innerText = result;
+                expression = result.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // ln(x)
+        if (value2 === "ln") {
+            try {
+                let num = eval(expression);
+                let result = Math.log(num);
+
+                input.innerText = "ln(" + num + ")";
+                output.innerText = result;
+                expression = result.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // floor
+        if (value2 === "floor") {
+            try {
+                let num = eval(expression);
+                let result = Math.floor(num);
+
+                input.innerText = "floor(" + num + ")";
+                output.innerText = result;
+                expression = result.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // ceil
+        if (value2 === "ceil") {
+            try {
+                let num = eval(expression);
+                let result = Math.ceil(num);
+
+                input.innerText = "ceil(" + num + ")";
+                output.innerText = result;
+                expression = result.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        // rand
+        if (value2 === "rand") {
+            let result = Math.random();
+
+            input.innerText = "rand()";
+            output.innerText = result;
+            expression = result.toString();
+            return;
+        }
+
+        // dms
+        if (value2 === "dms") {
+            try {
+                let deg = eval(expression);
+
+                let d = Math.floor(deg);
+                let minFloat = (deg - d) * 60;
+                let m = Math.floor(minFloat);
+                let s = Math.floor((minFloat - m) * 60);
+
+                let result = `${d}° ${m}' ${s}"`;
+
+                input.innerText = deg + "°";
+                output.innerText = result;
+                expression = deg.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+        //deg
+        if (value2 === "deg") {
+            try {
+                let parts = expression.split(" ");
+
+                let d = parseFloat(parts[0]) || 0;
+                let m = parseFloat(parts[1]) || 0;
+                let s = parseFloat(parts[2]) || 0;
+
+                let result = d + (m / 60) + (s / 3600);
+
+                input.innerText = `${d}° ${m}' ${s}"`;
+                output.innerText = result;
+                expression = result.toString();
+            } catch {
+                output.innerText = "Error";
+            }
+            return;
+        }
+
+
+
         expression += value;
         output.innerText = expression;
 
@@ -207,3 +445,28 @@ buttons.forEach((btn) => {
 
     });
 });
+
+
+
+// History
+let historyBox = document.getElementById("historyBox");
+
+function loadHistory() {
+    let history = JSON.parse(localStorage.getItem("calcHistory")) || [];
+
+    historyBox.innerHTML = "";
+
+    history.forEach(item => {
+        let div = document.createElement("div");
+        div.className = "border p-2 mb-2 rounded";
+
+        div.innerHTML = `
+      <div class="text-muted">${item.input}</div>
+      <div class="fw-bold">${item.output}</div>
+    `;
+
+        historyBox.appendChild(div);
+    });
+}
+
+loadHistory();
