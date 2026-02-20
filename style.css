@@ -55,10 +55,26 @@ body.dark-mode .offcanvas{
 
 body.dark-mode .themeText,
 body.dark-mode .modeText,
-body.dark-mode hr {
-  color: white;
+body.dark-mode hr,
+body.dark-mode .history-input,
+body.dark-mode .history-output {
+  color: white !important;
 }
 
 body.dark-mode .closeBtn{
     background-color: white;
+}
+
+.history-content::-webkit-scrollbar{
+    display: none;
+}
+
+.right-part{
+    overflow: hidden;
+}
+
+.history-content{
+    flex: 1;
+    overflow-y: auto;     
+    overflow-x: hidden;
 }
