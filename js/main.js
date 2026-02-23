@@ -109,3 +109,33 @@ document.querySelectorAll(".calc-btn").forEach(btn => {
 
     });
 });
+
+// Key Event
+document.addEventListener("keydown", (event) => {
+
+  let key = event.key;
+
+  if (!isNaN(key)) {
+    calc.append(key);
+  }
+  else if (key === "+") calc.append("+");
+  else if (key === "-") calc.append("-");
+  else if (key === "*") calc.append("x");
+  else if (key === "/") calc.append("÷");
+  else if (key === "%") calc.append("%");
+  else if (key === ".") calc.append(".");
+
+  else if (key === "Enter") {
+    calc.evaluate();
+    loadHistory();
+  }
+
+  else if (key === "Backspace") {
+    calc.backspace();
+  }
+
+  else if (key === "Escape") {
+    calc.clear();
+  }
+
+});
